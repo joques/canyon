@@ -1,6 +1,16 @@
 Research Outline
 ================
 
-coming soon...
+short intro...
 
-this file will contain a summary of the topics to be covered in this work
+# Description
+
+provide a short description of the research project
+
+# Key Features
+
+list all features here
+
+# Topics
+
+short description of the topics involved in this research
