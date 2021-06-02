@@ -7,14 +7,23 @@ short intro...
 
 provide a short description of the research project
 
-A [data store] storage engine is an internal software component that a data store uses to store, read, update and delete data in the underlying memory and storage system.
+A storage engine is an internal software component that a data store uses to store, read, update and delete data in the underlying memory and storage system.
 
 # Key Features
 
-list all features here
-data model could be key-value store or document
-persistent objects
-versioning (strengthening collaboration)
+The following features will be part of system requirements:
+
+* related to the storage system
+	* distributed B+Trees and LSM for reading, writing and updating
+	* persistent data
+	* content-addressable data
+	* data versioning (to stregthen collaboration)
+	* maybe compression
+	* will have to choose one or several data models (key-value, document, graph and wide-column)
+* related to distributed systems
+	* replication, concurrency and consensus
+	* membership (with gossip style)
+
 
 # Topics
 
