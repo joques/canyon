@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Futura-Medium;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20280\viewh13180\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 Presentation\
+__________\
+\
+What I understand\
+\
+Storage Engine\
+- \cf2 \expnd0\expndtw0\kerning0
+A software component of a database management system responsible for storing, retrieving, and managing data in memory and on disk.\
+- The reason for multiple engines available for database management systems is the different use cases offered. When it comes to reading and writing performance as well as the trade-offs on the CAP theorem (Consistency, Availability, Partitioning).\
+- What\'92s in a Storage engine:\
+	- Data structure: The algorithms used to store and retrieve the data. B-Trees and LSM-Trees being the famous of the two. One for read-intensive applications and the other for write-intensive applications.\
+	- Replication vs Sharding: Or maybe both?\
+	- Consistency: Multiple consistency models available. Looked into Casual consistency, but will continue to consider others.\
+	- Leader vs Leaderless: How to control the cluster of data. Primary/Back-up vs Consensus.\cf0 \kerning1\expnd0\expndtw0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+What I don\'92t understand & Where I need to improve\
+\pard\pardeftab720\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+- Data models\
+	- Reading Designing Data-Intensive Applications (Ch 2: Data Models and Query Languages).\
+- How to use the YCSB benchmarking framework.\
+	- I\'92m still looking into the GitHub repo you shared with me.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+What I worked on\
+\
+- Designed an LSM-Tree storage engine.\
+- Preliminary data model I used was key-value store.\
+- It has a combination of Replication (to handle a large workload) and Sharding (to achieve fault-tolerance). Thus distributing the cluster of replicated partitioned/sharded data\
+- The consistency model I initially adopted was Causal Consistency because I believed it would perfectly complement our versioning of data feature very well.\
+- I was still on the fence between \cf2 \expnd0\expndtw0\kerning0
+Primary/Back-up vs Consensus.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Preliminary Description of Data Storage(Engine)\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \'95distributed B+Trees and LSM for reading, writing, and updating\
+\'95persistent data; possibly on non-volatile memory\
+\'95content-addressable data\
+\'95data versioning (to strengthen collaboration)\
+\'95no in-place updating and deleting of data\
+\'95all data objects recorded will remain in the data store\
+\'95each data object will be versioned\
+\'95maybe compression\
+\'95will have to choose one or several data models (key-value, document, graph and wide-column)\cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 My progress}
