@@ -1,0 +1,87 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid1\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid3\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid101\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid102\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid103\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid104\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh17440\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs64 \cf0 Three service Clusters:\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8259 	}Leader Services (multiple nodes, approx/min 4)\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}one leader and multiple are back-ups\
+{\listtext	\uc0\u8259 	}each node has a memtable\
+{\listtext	\uc0\u8259 	}each node has a WAL\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8259 	}Index Services (multiple nodes, approx/min 5)\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}three are exclusively in-memory nodes accepting flushed SSTables from leader service cluster\
+{\listtext	\uc0\u8259 	}two are exclusively used to persist the indexes into disk from the other three in-memory nodes\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8259 	}Data Store Services (multiple nodes, min 4)\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}all nodes will persist the data object\'92s values received from in-memory index service nodes\
+{\listtext	\uc0\u8259 	}all nodes will retrieve/share the data object\'92s values to either:\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural\partightenfactor0
+\ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}leader service primary node\
+{\listtext	\uc0\u8259 	}client requesting the data\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Process\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8259 	}Write\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	1.	}Each leader service node will independently accept writes coming from the client, filling up their memtable, and backing up to their WAL for precautionary measures.\
+{\listtext	2.	}Once the threshold has been reached, the leader service node will flush its memtable to the index service cluster. Specifically the in-memory nodes.\
+{\listtext	3.	}One index service node will pick up a flushed SSTable. The index service node will split the SSTable into the index block and the data block. The index block will remain in the index service cluster while the data block will be stored on the data store service cluster. The index block will have the data object\'92s keys and corresponding metadata, while its data object value will be hosted on one of the data store service\'92s nodes, the data block.\
+{\listtext	4.	}The index service node will flush the data value to the data store service node.\
+{\listtext	5.	}The data store node will save/persist the data\
+{\listtext	6.	}The data store node will then send a confirmation response to the index service node: sending the ID of the data store node storing the value as well as the bytes offset. The index service that flushed the data object value should receive the confirmation response from the data store node; with that response, it should save the data store node and bytes offset of the data in the index block.\
+{\listtext	7.	}Once the index service node completes that process, it should persist its index block to one of the two index service nodes tasked with persisting the index.\
+{\listtext	8.	}Then repeat; for new writes, updates, and deletions.\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8259 	}Read\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	1.	}Read requests will be handled by the primary node in the leader service cluster. It will initiate reads from the memtables of all leader service nodes; starting with itself and going through the secondary nodes one by one until it find the latest key from read request.\
+{\listtext	2.	}If it fails to find the key(s) in the leader service node\'92s memtables, then the primary node will send request to the index service cluster. Specifically the disk nodes - because that is where the synchronised index block is persisted from the in-memory nodes after every successful write operation. Any one of the disk nodes will handle the request and iterate over the segment tables until the key is found.\
+{\listtext	3.	}Once the key is found, the disk node will send the key\'92s information (metadata) to the leader service\'92s primary node. The metadata will include the following\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural\partightenfactor0
+\ls2\ilvl2\cf0 {\listtext	\uc0\u8259 	}single scans = key: [[value], timestamp, version, predecessor]\
+{\listtext	\uc0\u8259 	}range scans = k
+\fs36 1
+\fs64 : [[val], ts, ver, pre]\'85k
+\fs36 n
+\fs64 : [[val], ts, ver, pre]\
+{\listtext	\uc0\u8259 	}The value metadata in the key is comprised of the following:\
+\pard\tx2380\tx2880\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2880\fi-2880\pardirnatural\partightenfactor0
+\ls2\ilvl3\cf0 {\listtext	\uc0\u8259 	}ID of data store service node\
+{\listtext	\uc0\u8259 	}byte offsets of where the value(s) are store\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	4.	}The primary node will then send request to data store service cluster. Specifically the data store node that hosts the key\'92s value.\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural\partightenfactor0
+\ls2\ilvl2\cf0 {\listtext	\uc0\u8259 	}The leader service primary node will initiate a connection with data store service node to get the data object\'92s value. The leader service primary node will then send the necessary data to the client.\
+{\listtext	\uc0\u8259 	}The leader service primary node will then send the client request to that specific data store service node to communicate directly. The data store node will then send the necessary data to the client.\
+\pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8259 	}Versioning (instead of compaction)\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	1.	}The index service cluster - specifically the disk nodes - will have the index. This will include the sorted keys (key: [[value], timestamp, version, predecessor]) as well as duplicates, since this system does not discard updated keys with older timestamps, as well as keys marked for termination (keys containing tombstones or dormant/death certificates). The versioning process will occur here.\
+{\listtext	2.	}The index in disk nodes in the index service clusters are synchronised. Therefore, versioning operation will occur on any node, then it will propagate the changes to the other nodes to persist and sync.\
+{\listtext	3.	}Thus, the design will undergo a merging/reconciliation process\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural\partightenfactor0
+\ls2\ilvl2\cf0 {\listtext	\uc0\u8259 	}This process is meant to sort the keys.\
+{\listtext	\uc0\u8259 	}This will reclaim some storage capacity. \
+{\listtext	\uc0\u8259 	}This process will use a Tree Data Structure to sort and store keys from old segments into new segments in a two-way sorting sequence:\
+\pard\tx2380\tx2880\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2880\fi-2880\pardirnatural\partightenfactor0
+\ls2\ilvl3\cf0 {\listtext	\uc0\u8259 	}first by key\
+{\listtext	\uc0\u8259 	}then by timestamp\
+\pard\tx1660\tx2160\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li2160\fi-2160\pardirnatural\partightenfactor0
+\ls2\ilvl2\cf0 {\listtext	\uc0\u8259 	}A sorting mechanism similar to memtable\'92s Tree DS to sort incoming writes.\
+\pard\tx940\tx1440\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	4.	}Afterwards, all the keys (duplicates and unique) will be sorted in order of the key, then its timestamp. This will ease/optimise range scans for viewing versions of data for the same key, and otherwise. \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+}

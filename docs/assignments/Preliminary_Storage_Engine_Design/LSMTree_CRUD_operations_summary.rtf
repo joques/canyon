@@ -1,0 +1,197 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Futura-Medium;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Futura-MediumItalic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c93333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid103\'02\'02.;}{\levelnumbers\'01;}\fi-360\li2160\lin2160 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid202\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid502\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh17440\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf0 Source: https://dzone.com/articles/how-three-fundamental-data-structures-impact-stora\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Storing incoming modify operations in a buffer (usually named "memtable")\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Sorting and storing the data when the buffer is full\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+This results in the entire buffer being written to memory in one sequential operation\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}I\expnd0\expndtw0\kerning0
+n order to address SST files\'92 distributed nature, production software often implements different maintenance logic:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+File compaction:\'a0merging files into one\
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+File levels:\'a0making file hierarchies,\'a0to avoid checking each file for an existing key\
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+Bloomfilters:\'a0helps lookup individual keys faster (but doesn\'92t help with ranges)\
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \
+\'97\
+\
+Source: https://queue.acm.org/detail.cfm?id=3220266\
+\
+Writing and Updates\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+To allow sequential writes, LSM-trees batch writes and updates in a memory-resident table\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+often implemented using a data structure allowing logarithmic time lookups, such as a {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"}}{\fldrslt \cf3 \ul \ulc3 binary search tree}} or {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Skip_list"}}{\fldrslt \cf3 \ul \ulc3 skip list}}\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+as writes come in, the data is added to this tree (BST, Red-Black tree, Skip List) and is sorted\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+until its size reaches a threshold, at which point it is written on disk (this operation is called a 
+\f2\i flush
+\f0\i0 ) in sorted order\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Whenever the memory table is large enough, its sorted contents are written on disk. To the SSTable (disk-resident ordered immutable data structure).\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+A format for storing key-value pairs in which the keys are in sorted order.\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}The \expnd0\expndtw0\kerning0
+SSTable is split into two parts: data and index blocks\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160\partightenfactor0
+\ls2\ilvl2\cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+A data blocks consists of sequentially written unique key/value pairs, ordered by key.\
+\ls2\ilvl2\kerning1\expnd0\expndtw0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+An index block contains keys mapped to data-block pointers, pointing to where the actual record is located. Often implemented using a format optimised for quick searches, such as a B-tree, or using a hash table for a point-query.\kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\
+Reading/Retrieving/Look up\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Retrieving the data requires:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls3\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+searching all disk-resident parts of the tree, \
+\ls3\ilvl1\kerning1\expnd0\expndtw0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+checking the in-memory table, and\
+\ls3\ilvl1\kerning1\expnd0\expndtw0 {\listtext	3.	}\expnd0\expndtw0\kerning0
+merging their contents before returning the result. \
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Reads are served, hitting both disk- and memory-resident tables, requiring a merge process to reconcile the data. (Compaction and/or Merge)\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Since the number of allocated files steadily grows, LSM Trees have to merge and rewrite files to make sure that the smallest possible number of files is accessed during the read, as requested data records might be spread across multiple files. \
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The merge step during the read is required since the searched data can reside in multiple SSTables.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}Implement the Bloom Filter algorithm\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls3\ilvl1\cf2 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}Use this \expnd0\expndtw0\kerning0
+probabilistic data structure to test whether an element is a member of the set.\
+\ls3\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}This will \expnd0\expndtw0\kerning0
+tell us if the key \'93might be in an SSTable\'94 or \'93is definitely not in an SSTable.\'94\
+\ls3\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+SSTables for which a Bloom filter has returned a negative match are skipped during the query.\
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \
+Deletes\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}A deletion is just a record written with tombstone marker. \expnd0\expndtw0\kerning0
+Whenever a delete request is received, a unique marker called a 
+\f2\i tombstone
+\f0\i0  is written for that key.\kerning1\expnd0\expndtw0 \
+{\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+LSM-tree insert placeholders (often called 
+\f2\i tombstones
+\f0\i0 ), specifying which key was marked for deletion.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+During the read, the records that get shadowed by deletes are skipped and indicated as the key does not exist.\
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \
+Updates\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}A\expnd0\expndtw0\kerning0
+n update is just a record written with a later timestamp.\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+During the read, out of two records with the same key, only the one with the later timestamp is returned.\
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \
+Compaction\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Since SSTables are 
+\f2\i immutable
+\f0\i0 , they are written sequentially and hold no reserved empty space for in-place modifications:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls6\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+This means insert, update, or delete operations would require rewriting the whole file.\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Over time, the number of disk-resident tables will grow:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls6\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+data for the same key located in several files, multiple versions of the same record, redundant records that got shadowed by deletes, \
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+and the reads will continue getting more expensive. \
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Compaction will reduce the cost of reads by reconciling space occupied by shadowed records, and reduce the number of disk-resident tables.\
+\ls6\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+This process reads complete SSTables from disk and merges them:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls6\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+Because SSTables are sorted by key and compaction works like merge-sort.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+This operation is very efficient: records are read from several sources sequentially, and merged output can be appended to the results file right away, also sequentially.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+One of the advantages of merge-sort is that it can work efficiently even for merging large files that don't fit in memory.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+The resulting table preserves the order of the original SSTables.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f1\b \uc0\u8259 
+\f0\b0 	}\expnd0\expndtw0\kerning0
+Once the compaction process has written a new merge for the input sources, the old files are deleted.\
+\pard\tx566\tx1133\pardeftab720\partightenfactor0
+\cf2 \
+\'97\
+\
+Distributed Nature of System\
+\
+Concurrency\
+}
