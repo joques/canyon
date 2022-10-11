@@ -121,7 +121,7 @@ Begin
 						Path = ModifyVersion(Key, VersionNumber, sbCtrl, CtrlState, Pointer, PreVersion) # This is just the path from index
 						
 						# We need to update the tree or hash table as well 
-						PathBuilder(Key, Path, Pointer)
+						PathBuilder(Key, PreVersion, Pointer)
 						
 						
 						Return "Completed"
