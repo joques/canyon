@@ -38,6 +38,7 @@ sorting=ynt
 \newcolumntype{y}{>{\columncolor{white}}c}
 
 % Page layout
+\usepackage{parskip}
 \parindent 0pt
 \parskip 1ex
 \renewcommand{\baselinestretch}{1.49}
@@ -130,7 +131,7 @@ This thesis is dedicated to all the deserving children who do not have access to
 
 \certificateoforiginality
 
-\acknowledgement{Glory be to Allah (S.W.A), the Creator, the Sustainer of the Universe. Who only has the power to honour whom He please, and to abase whom He please. Verily no one can do anything without His will. From the day, I came to NUST till the day of my departure, He was the only one Who blessed me and opened ways for me, and showed me the path of success. Their is nothing which can payback for His bounties throughout my research period to complete it successfully.
+\acknowledgement{To God Almighty for the strength to never give up and pursue all things towards His Kingdom and Glory. To my family who through all sleepless nights, never complained about my present-absence. My wife Lutopu and son Michael and daughter Lillian as well as newly adopted children.To my Work colleagues for patience and support, To Prof J. Quenum for patience and faith in me. Thank you all.  
 }
 
 \tableofcontents
@@ -139,27 +140,117 @@ This thesis is dedicated to all the deserving children who do not have access to
 % \lstlistoflistings
 
 \chapter*{Abstract}
-Abstract\ldots
+It is well known that; within complex systems and concurrency, fault deduction and system
+failures is rated as the greatest risk factor amongst software developers. Even with various
+efforts to eliminate some of the expected errors and or bugs. Distributed Systems tend not to
+be for faint-hearted software developers. As a result this working document will focus on the
+ability to check the correctness of our system (a distributed storage engine) beyond testing.
+One such solution is to use the Temporal Logic of Actions (TLA) in the designing and developmental processes before actual coding takes place.  Temporal Logic of Actions Plus (TLA+) is the specification
+language used throughout this research process. The specification is focused on the key
+operations of the storage engine: inserting, updating and deleting and reading data from either a distributed physical storage medium or a local physical storage medium.
 
 \resetpagenumbering
 
 \chapter{Introduction and Motivation}\label{c-intro}
 
-This is a general introduction to what the thesis proposal is all about. Keep in mind that it is not just a description of the contents of each section. 
+\section{Introduction}
+Currently cloud computing and outsourcing is a general norm amongst developers. African,
+and Namibian software developers to be precise, finds themselves with a hot bill to swallow with
+regards to outsourcing storage, either for personal projects or cliental. It is with this in mind
+that a small and compact team from the Namibia University of Science and
+Technology embarked on the development of a storage engine, that aims to solve some of the basic but crucial architectural aspects of the development and deployment process within our country and continent as a whole.
+According to the Wikipedia contributors (2022), “A database engine (or storage engine) is the
+underlying software component that a database management system (DBMS) uses to create,
+read, update and delete (CRUD) data from a database.” 
 
-Briefly summarize the research question(s), some of the reasons why it is a worthwhile question. Details of these questions will be stated in the later sections. It also recommended giving a birds-eye-view of the candidate solutions and possible out comes.
+%Skipping Paragraphs by one line
+\setlength{\parskip}{10pt}
 
-\section{Problem Statement and Contribution}
-Different disciplines have varying naming conventions. In engineering, thesis tend to refer to problem(s) to be solved where other disciplines talk in terms of question(s) to be answered. In either case, this section has three main parts:
-
+Storage engines can be classified as
+either as transactional or non-transactional, and categorized as local or distributed. The storage engine under the microscope, is a transactional and distributed storage engine which aims to have high availability with high scalability as well as strong consistency and can be used for data analysis. A brief highlight of the level of complexity within the distributed storage engine includes; Conversions, Version Control, Synchronizations, Concurrent Read-Write operations, Transaction Support, Backups and Quality Assurance, High availability and reduced time complexity in terms of overall performance. A similar dilemma was faced by Senior Developer
+at Amazon Web Service (AWS). It is with this in mind that the researcher intends to utilize TLA+ a formal specification method to specify the key operations of the multi-versioned storage engine.
+The researcher assumes that the reader has a background in Mathematics with specific reference to the Set theory and Set Notation as the main translation of the derived algorithm will be denoted in Set Theory Notation. Below are small snippets of what to expect through out the document
 \begin{itemize}
-  \item A concise statement of the question(s) that your thesis shall tackle.
-  \item Justification, by direct reference to literature review from previous
-  section that your question is previously unanswered.
-  \item Discussion of why it is worthwhile to answer this question.
+\item Actions: Å, M, M1, M2
+\item Predicates: P, Init
+\item Variables: Path, VersionNumber, Pointer
+\item Primed variables: rootPath` PreVersion`, PPoniter`
+\item States: s, s`
+\item State function: f
+\item Behavior: <s0, s1,..., sn>
+\item Values: Data items, e.g. Integers, constants, String, Boolean
+\item Semantics: [f],[Pointer], K[VersionNumber], rootPath[f]
+\item Formulas: F, G, \textPhi
+\item Operators: \Box, \diamond, \neq, \vee, \wedge
+\item Quantifiers: \forall,\exists
+\item Symbols:  ≜, <, >, ~, [, ], (, ), =, \equiv, \cdots
+
 \end{itemize}
 
-Since this is one of the sections that the readers are definitely looking for, describe the issues more clearly by dividing this section into multiple subsections such as a spate section for ``Aims", another for listing ``Original Contributions", and yet another for mentioning the ``Limitations".
+% Problem Statement
+\section{Problem Statement and Contribution}
+%Different disciplines have varying naming conventions. In engineering, thesis tend to refer to problem(s) to be solved where other disciplines talk in terms of question(s) to be answered. In either case, this section has three main parts:
+
+%\begin{itemize}
+  %\item A concise statement of the question(s) that your thesis shall tackle.
+  %\item Justification, by direct reference to literature review from previous
+  %section that your question is previously unanswered.
+ % \item Discussion of why it is worthwhile to answer this question.
+%\end{itemize}
+
+%Since this is one of the sections that the readers are definitely looking for, describe the issues more clearly by dividing this section into multiple subsections such as a spate section for ``Aims", another for listing ``Original Contributions", and yet another for mentioning the ``Limitations".
+
+
+(Alvarez, 2020) "As can be inferred, the selection, implementation, operation and
+maintenance of a System for Automatic Diagnosis of Failures is not a simple task, requiring at
+each stage, care so that the result provided by the system, after its implementation, is within
+the one initially specified.” Is it therefore possible to detect system faults within a storage
+engine and rectify such faults to increase the quality and effectiveness of the storage engine,
+by focusing on the reliability and correctness of the storage engine, given its complexity?
+Through experience, the researcher has come to the understanding that all software design, algorithms and
+coding processes contains one or more errors, some which are easy to detect while others not.
+
+%Skipping Paragraphs by one line
+\setlength{\parskip}{10pt}
+
+If there was a method to avoid errors in the core system processes and development stages,
+what would that look like? And how effective would it be? This dilemma lead Professor Leslie
+Lamport to seek and develop an alternative approach to solving complex systems through
+formal methods. “When I developed TLA, I realized that, for the first time, I had a formalism
+that really was completely formal, so formal that mechanically checking TLA proofs should be
+straightforward.” (Urban Engberg, Leslie Lamport, Peter Grønning, 1992).
+
+%Skipping Paragraphs by one line
+\setlength{\parskip}{10pt}
+
+The purpose of this research is therefore to actively use TLA+ as a formal method in the
+developing process of the storage engine to specify and evaluate the error reduction rate, by
+focusing on the safety and correctness of the system of the storage engine. Through the use
+of TLA+ the researcher aims to formally specify the critical components and or operations of
+the system in order to verify its property against an implementation.
+
+\section{RESEARCH OBJECTIVES}
+The researcher aims to apply the TLA+ to the CRUD key operations of the storage engine. To
+verify the properties of the implementation against the specification, during the development
+and testing phase of the storage engine.
+With the acronym CRUD the researcher aims to:
+\begin{enumerate}
+
+\item. C = Create
+This will be the write action and subsequent write operations
+\item R = Read
+This will be the read request sent by a client
+\item U = Update
+This will be a write new version operation
+\item D = Delete
+This will be the stop write operation on a given version tree only.
+With reference to the above the researcher intends to:
+\begin{enumerate}
+\item Specify the CRUD operations of the storage engine in TLA+.
+\item Evaluate the design using the specification
+\item Verify an existing implementation against the specification
+\end{enumerate}
+\end{enumerate}
 
 \chapter{Literature Review}\label{c-review}
 Here you review the state of the art relevant to your thesis proposal. The idea is to present the major ideas in the state of the art right up to, but not including, your own personal brilliant ideas.
