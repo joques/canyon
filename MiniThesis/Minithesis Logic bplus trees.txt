@@ -1,0 +1,209 @@
+Minithesis Logic
+
+For the Storage engine
+
+Class: StorageEngine
+Object State/Attributes: 
+			1. Empty = does not exist
+			2. Opened = has 1 or more versions that can be updated
+			3. Final = has existing versions but can not be updated
+this will be for the storage engine state. 
+
+i WILL NEED AN INDEX THAT WILL STORE THE DATA STRUCTURE
+
+
+
+To create we need the Key and value
+
+Key: Will consist of 
+	1. Storage/User ID
+	2. Version ID
+
+Value: Will be the Path to the Physical Sorage
+		IS the entire graph of versions . 
+
+Write Operation:
+
+{leave it outside the indexing} Bloom filter causision filter
+
+first hash and checks if exist in the system. 
+
+
+
+
+
+Hashing value (have a better data structure) 
+	Checks:
+			Existing Sorage/User ID if exists
+			
+			if not Exist then 
+				generate new storage/user ID
+				Generate new version ID
+			else
+				generate new version ID 
+
+
+Assumptions and Actions:
+
+While checks is performed
+	Disk storage write action is automatically performed as well
+	result will be a path to the data
+	
+
+DBMS:
+	B+Tree
+		
+		Option 1, each Storage/User ID will contain own B+Tree where 
+			a) index is based on version ID
+			b) data on leaf node is the path to physical storage
+	
+		Option 2, the whole DBMS will be B+tree where
+			a) index is a string of user data
+			b) data on the leaf is Storage/User IDs and Paths
+			
+			NOTE!! this is based on the search and read operation functionallity
+			
+
+Distributed Storage/User
+	The location of the physical storages are based on a distributed system
+	where the closes available storage {empty slot is used}
+	
+	a path to this storage is retrued to the Controller to add to the tree
+
+
+
+Read Operation:
+
+	default read operation will be to return the data on the path with latest version only
+	
+	filter read operation will contain the version number
+	then the path and data is retured based on the parameter (version number) inserted
+
+Update Operation:
+	
+	This will perform a write operation which
+		1. Assums that there is an existing version already
+		2. updates the version counter to new one
+		3. update the B+ tree (method or automatic)
+
+Delete Operation:
+	
+	This needs to delete any further update/write operations on the last known version
+		create a states to describe possible actions
+		
+		1. empty = does not exist
+		2. Opened = has 1 or more versions that can be updated
+		3. Final = has existing versions but can not be updated
+		
+	to delete we can just change the state of the Storage/User ID
+		1. Change state to final to stop update versions
+		2. 
+		
+
+
+
+
+dISTRIBUTION COVERS 4 PARTS 
+A single object will be replicated  on different Storage nodes. 
+
+
+
+Decision are we going to have 
+vERSION 1 {
+vERSION2 
+
+or no matter the version they will all go on version 1
+
+have all version on one node
+
+point query is easy 
+
+range query: version 1, ver2, ver3 for object 1
+
+if distributed on different nodes it is time consumming. 
+
+wE WILL DOE REPLICATION 
+				
+				
+
+Question from prof
+How many version does an object has to pre-allocate the 
+
+Can we preallocate disk blocks for versioning of an object and update the index for that 
+
+Testing will determine the averages that will be used to preallocate storage for versioniing
+
+
+This will help the Deleting by re allocating the free space to some other object. 
+
+
+
+
+What Prof wants to see. 
+
+This is the state of the system
+
+Initial 
+	After an operation 
+		This is the new state 
+		He wants to see each change of state after one operation
+
+		
+		Consistant states will return sequential state 
+		
+		The system should not be halted when doing putiple querries that are possible
+		Discard illigal operations and proceed with leagal one. 
+		
+		This will execute a subset of the operations. 
+		
+		
+		
+
+Start with the Object:
+Specify the Object and Operations
+
+Specify the Index
+
+
+
+
+
+Centralized index { Single point of failier}
+
+Decentralized { Read application increased (hit several nodes not to harm the read operations) }
+
+Next week descussions 
+
+
+
+
+https://wbd.ms/share/v2/aHR0cHM6Ly93aGl0ZWJvYXJkLm1pY3Jvc29mdC5jb20vYXBpL3YxLjAvd2hpdGVib2FyZHMvcmVkZWVtLzI1Y2Q0ODRiOTEzZjQ4ODFhMGIxZTRjODVkMGYwZDEyX0JCQTcxNzYyLTEyRTAtNDJFMS1CMzI0LTVCMTMxRjQyNEUzRF9kMWMxMDYwNy0zM2E1LTQ1MzQtOGRiYS0xN2M3YmNlMzNlOTc=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		

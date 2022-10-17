@@ -1,0 +1,179 @@
+Begin
+# First Time Write
+#Model is Index
+ 1. Checks if a key exist
+ 2. If no key present:
+		Initiate New_Object { create or Assign a Key, Version, GlobalControl and  Root_Path}
+		Initiate First_Write {Path => rootPath, 
+							  Pointer => "Self",
+							  VersionNumber => Version #must always be last leaf node
+							  StateControl => "Open"
+							  subControl => "Leaf"
+							  timeStamp => Date
+							}
+	Else:
+		GlobalControl <= subControl
+		Initiate ModifyVersion(Key, VersionNumber, StateControl, subControl,PPointer)  #These are the parameters to pass and to recieve
+							  { (* This step is bidirectional we wish to modify a specific object at Object level
+							     * and to update the changes at Index level if needed. 
+								 * I would normally just pass a new path that is to be updated at object level but 
+								 * Index also needs to know who to send it too.
+								 * 
+								 * 
+								 *)
+								 
+								 Path <= New(Path), 
+								 Pointer <= PPoniter,
+								 VersionNumber <= VersionNumber #must always be last leaf node
+								 StateControl <= StateControl
+								 subControl <= "Leaf"
+								 timeStamp <= Date
+								 
+								 Return Path
+							  }
+							  
+		Initiate ReadBuilder(Key, Version, PreVersion)
+												(* This will Get objects located at Each path from Root to Version
+												 * Root is Head and Version is Tail
+												 * Downloading the data object can be done asynchronosly Starting with the root
+												 *
+												 * We then need to combine all pointers files into one to make a delivery
+												 * This can be done on local machine with a small add on or function after the get
+												 *
+												 *)
+												 
+												 root <= Key.Root
+												 leaf <= Key.Version.Path
+												 [][] Paths <= new [][] # Empthy array
+												 [][]Parents <= new[][] #empty array
+												 
+												 # We will first add current version to Paths
+												Paths.append(Version,Leaf) The tail will start 
+												
+												 # Lets get the Parent Path
+												 getParents(PreVersion) # PreVersion is pointer to the Parent of current version
+													while x != root 
+														pp <= PreVersion.pointer
+													    a <= PreVersion.Version
+														b <= PreVersion.path
+														
+														Parent.Append(a,b) 			# Adds the Parent Version and Path to the Array
+														getParents(pp)
+													
+														
+												
+												getParents(Version,PreVersion)
+												stop = Parents.length
+												While Parents.length>0 
+													for i = 1 to stop
+														Paths.append(Parents[i])  # want to populate the paths with the parents
+												
+												 Paths.append(Root.Version, Root.Path 	# Finally we add the root to paths as well
+												 
+												 Returns Paths    # a list of paths
+												
+												}
+
+		
+#Model is Object
+	1. Load ... 
+	
+	2. # Path builder (Hash Table or Array of some Data Structure)
+	
+		Initiate PathBuilder(Key, Root, VersionNumber){ (* We need to traverse the Tree for all paths 
+														 * the start will be the root and the end the leaf
+														 *
+														 * This is similar to ReadBuilder logic not sure if i need it
+														 *
+														 *)
+														 
+														 
+													}	
+	
+	3. Define Methods
+	
+	Read_Rec(Key, Version){ # Multi- Read Paths
+							if Key exist then
+								BigObj <= Curl(ReadBuilder(Key, Version))
+							
+							Return BigObj
+						}
+	Read_Big(Key){
+					(*
+					* Basically returns the B+Tree contents Version numbers 
+					*
+					*
+					*
+					*)
+				 }
+				 
+	Update_Write(Key, Parent){ 
+					StateofP <= Parent.StateControl
+					If StateofP != "done" then
+						PreVersion = Parent.version
+						VersionNumber <= VersionNumber + 1
+						
+						sbCtrl <= "Leaf"
+						CtrlState <= "Open"
+						Pointer <= Parent.Path
+						timeStamp <= Date
+						
+						Path = ModifyVersion(Key, VersionNumber, sbCtrl, CtrlState, Pointer, PreVersion) # This is just the path from index
+						
+						# We need to update the tree or hash table as well 
+						PathBuilder(Key, PreVersion, Pointer)
+						
+						
+						Return "Completed"
+						
+						
+						
+					Else
+						Return "Error Updae can not be performed" # No valid current version exists
+						
+				 }
+				 
+	Delete(Key, Version) { if subControl is Parent Then
+								return "Error Delete not Valid"
+							elif StateControl == "Open"
+								set StateControl <= "done"
+								return "done"
+							else 
+								return "Error Delete not valid"
+						
+						}
+	
+	3.
+	
+	4. 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
