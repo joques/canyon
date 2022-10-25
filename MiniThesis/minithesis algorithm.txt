@@ -10,7 +10,15 @@ Begin
 							  StateControl => "Open"
 							  subControl => "Leaf"
 							  timeStamp => Date
-							}
+							} 
+							# rebalancing need to be done if the key fields are done. 
+							
+							Data structure design B+Tree must be specified. 
+							Root 
+							height 
+							occupancy factor. 
+							
+							
 	Else:
 		GlobalControl <= subControl
 		Initiate ModifyVersion(Key, VersionNumber, StateControl, subControl,PPointer)  #These are the parameters to pass and to recieve
@@ -74,9 +82,13 @@ Begin
 												
 												}
 
+
+
+
 		
 #Model is Object
 	1. Load ... 
+	init(instance of the object and a replica is the values from the index)
 	
 	2. # Path builder (Hash Table or Array of some Data Structure)
 	
