@@ -41,7 +41,7 @@ for edges we will denote as ver (version)
 node n has a neighbor m such that ver(n) to ver(m) + 1 or ver(m) + x where x is an positive integer 
 *)
 
-VARIABLE object, controlState, subControlState, key, Ver, Edges
+VARIABLE object, controlState, subControlState, key, Ver, Edges, Path
 
 TypeOK == /\ controlState \in {"Start", "middle", "done"}
           /\ subControlState \in {"Lf", "Pt", "Co"}
@@ -250,5 +250,5 @@ Liveness == <>(~ ENABLED Next)
  
 =============================================================================
 \* Modification History
-\* Last modified Tue Oct 04 13:03:23 CAST 2022 by goodwill
+\* Last modified Tue Oct 25 11:00:17 CAST 2022 by goodwill
 \* Created Tue Oct 04 09:12:06 CAST 2022 by goodwill
