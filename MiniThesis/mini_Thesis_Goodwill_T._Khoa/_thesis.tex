@@ -8,6 +8,7 @@ sorting=ynt
 \addbibresource{references.bib}
 
 % Essential packages
+%\usepackage{tla}
 \usepackage{amsmath, amssymb, amsthm} % AMS Packages
 \usepackage{graphicx,color}           % Packages for graphics and color
 \usepackage[left=1.5in, right=1in, top=1in, bottom=1in, includefoot, headheight=13.6pt]{geometry}
@@ -169,10 +170,11 @@ read, update and delete (CRUD) data from a database.”
 Storage engines can be classified as
 either as transactional or non-transactional, and categorized as local or distributed. The storage engine under the microscope, is a transactional and distributed storage engine which aims to have high availability with high scalability as well as strong consistency and can be used for data analysis. A brief highlight of the level of complexity within the distributed storage engine includes; Conversions, Version Control, Synchronizations, Concurrent Read-Write operations, Transaction Support, Backups and Quality Assurance, High availability and reduced time complexity in terms of overall performance. A similar dilemma was faced by Senior Developer
 at Amazon Web Service (AWS). It is with this in mind that the researcher intends to utilize TLA+ a formal specification method to specify the key operations of the multi-versioned storage engine.
-The researcher assumes that the reader has a background in Mathematics with specific reference to the Set theory and Set Notation as the main translation of the derived algorithm will be denoted in Set Theory Notation. Below are small snippets of what to expect through out the document
+The researcher assumes that the reader has a background in Mathematics with specific reference to the Set theory and Set Notation as the main translation of the derived algorithm will be denoted in Set Theory Notation. Below are small snippets of what to expect through out the document.
+
 \begin{itemize}
 \item Actions: Å, M, M1, M2
-\item Predicates: P, Init
+\item Predicates: P, Init \baro
 \item Variables: Path, VersionNumber, Pointer
 \item Primed variables: rootPath` PreVersion`, PPoniter`
 \item States: s, s`
@@ -181,9 +183,9 @@ The researcher assumes that the reader has a background in Mathematics with spec
 \item Values: Data items, e.g. Integers, constants, String, Boolean
 \item Semantics: [f],[Pointer], K[VersionNumber], rootPath[f]
 \item Formulas: F, G, \textPhi
-\item Operators: \Box, \diamond, \neq, \vee, \wedge
-\item Quantifiers: \forall,\exists
-\item Symbols:  ≜, <, >, ~, [, ], (, ), =, \equiv, \cdots
+\item Operators: \Box, \diamond, \neq, \vee, \wedge %done
+\item Quantifiers: \forall, \exists %done
+\item Symbols:  \triangleq, <, >, \backsim, [, ], (, ), =, \equiv, \cdots
 
 \end{itemize}
 
@@ -236,7 +238,7 @@ and testing phase of the storage engine.
 With the acronym CRUD the researcher aims to:
 \begin{enumerate}
 
-\item. C = Create
+\item C = Create
 This will be the write action and subsequent write operations
 \item R = Read
 This will be the read request sent by a client
@@ -251,6 +253,10 @@ With reference to the above the researcher intends to:
 \item Verify an existing implementation against the specification
 \end{enumerate}
 \end{enumerate}
+
+
+
+
 
 \chapter{Literature Review}\label{c-review}
 Here you review the state of the art relevant to your thesis proposal. The idea is to present the major ideas in the state of the art right up to, but not including, your own personal brilliant ideas.
@@ -283,8 +289,72 @@ Misc & \cite{Hayes1993}\\ \hline
 \end{table}
 
 
+\chapter{Storage Engine}
+A brief description of the storage engine an example use, replication processes and operations specific to this document
 
-\chapter{Design and Methodology}
+\section{Overview}
+The Storage engine itself is not is not what this research paper is focused. However This paper relates to the storage engine by addressing some core issues in the development process to avoid potentially severe costs and termination due to one or more errors or conflicts at a later stage in the development process. 
+
+\subsection{Functionality}
+The researcher assumes that the storage engine should be able to;
+\begin{itemize}
+    \item Store and Retrieve data.
+    \item Modify existing Data
+    \item Keep all versions of the modification
+    \item Delete the modification process
+    \item Keep track of all modification
+    \item Retrieve all or a certain version of the modification.
+    \item Create several replica of the data
+    \item implement a B+ Tree Data structure to handle the data
+    \item Keep record of different data objects 
+    \item Allow modification of on each object individually.
+    \item Allow concurrent read write operations to occur. 
+    \item Furthermore some other complex operations not yet defined in the scope of this paper. 
+\end{itemize}
+
+\section{Use Case 1}
+
+\section{Use Case 2}
+
+\section{Replication}
+
+\section{Key Operations}
+The key operation can be classified as the basic CRUD operations. 
+
+\begin{itemize}
+    \item Create: This is the first write operation.
+    \item Read: This is all the reading operations.
+    \item Update: This is the version modification and also a write operation
+    \item Delete: This should not delete the data, but only prevent any further updates (versions and modifications) from being 
+\end{itemize}
+
+
+
+
+
+\chapter{Storage Engine Specification}
+
+\section{Model Description}
+
+\section{Constant and Variables}
+
+\section{Initialization}
+
+\section{Next State}
+
+%\section{}
+
+
+\section{Operation Specification }
+
+\subsection{Write Operation}
+
+\subsection{Read Operation}
+
+\subsection{Update Operation}
+
+\subsection{Delete Operation}
+
 \label{c-methods}
 
 This part of the thesis is much more free-form. It may have several subsections. But it all has only one purpose: to convince the examiners about the answer to the research question(s) or solution to the problem(s) that you set for yourself in the proposal.
@@ -293,7 +363,7 @@ This part of the thesis is much more free-form. It may have several subsections.
 This definition is placed within a chapter so is its number.
 \end{definition}
 
-\begin{figure}[htp]
+\begin{figure}[http]
 \begin{center}
   \includegraphics[width=0.7\columnwidth]{nust.jpg}
   \caption{NUST Emblem.}
@@ -302,20 +372,22 @@ This definition is placed within a chapter so is its number.
 \end{figure}
 
 
-\chapter{Implementation and Results}
+\chapter{Verification of Implementation}
 \label{c-results}
 
 So show what you did so far (implementation and testing) that is relevant to
 answering the question(s) or solving the problem(s).
 
 
-\input{chapters/chapter1-intro}
-\input{chapters/chapter2-literature}
+%\input{chapters/chapter1-intro}
+\input{chapters/chapter9-Conclusion}
 
 % \bibliographystyle{ieeetr}
 %\bibliography{references}
 \printbibliography
 
+
+%\input{chapters/The_TLA+_Specification}
 \begin{appendix}
 \chapter{First Appendix}
 The separate numbering of appendices is also supported by LaTeX. The \textit{appendix} macro can be used to indicate that following chapters are to be numbered as appendices. Only use the \textit{appendix} macro once for all appendices.
