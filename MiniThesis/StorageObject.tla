@@ -73,90 +73,11 @@ Init == /\ key = [n \in Nodes |-> n]
         /\ controlState = "middle"
         /\ subControlState = "Pt" 
 
-(* All Methods to incorporate
-
-vars == <<timestamp, values, deliverQueues>>
-nodeIds == 1..N_NODES
-
-\Prepares to read   *\
-DeliverSet(n, T, t, k, v) ==
-  values' = [
-      values EXCEPT ![n] = {<<tp, kp, vp>> \in values[n] : tp \notin T} \union { <<t, k, v>> }
-    ]
-
-\* Clears current read req *\
-DeliverDelete(n, T) ==
-  values' = [
-    values EXCEPT ![n] = {<<t, k, v>> \in values[n] : t \notin T}
-  ]
-
-\* Checks read Commad and Parents connected to it *\
-Deliver(n, command, payload) ==
-  \/ command = "set"
-    /\ DeliverSet(n, payload[1], payload[2], payload[3], payload[4])
-  \/ command = "delete"
-    /\ DeliverDelete(n, payload)
-
-\* Prints Tree Graph with Children *\
-Broadcast(n, command, payload) ==
-  /\ Deliver(n, command, payload)
-  /\ deliverQueues' = [
-      i \in nodeIds |->
-        IF i = n THEN
-          deliverQueues[i]
-        ELSE
-          Append(deliverQueues[i], <<command, payload>>)
-      ]
-
-\* UpdateWrite Checks if not deleted and if can be updated *\
-RequestSet(n, k, v) ==  
-  LET matches == {<<t, kp, vp>> \in values[n] : k = kp}  IN
-  LET T == {t : <<t, kp, vp>> \in matches}  IN
-    /\ timestamp' = timestamp + 1
-    /\ Broadcast(n, "set", <<T, timestamp, k, v>>)
-
-\* Checks if we can Delete *\
-RequestDelete(n, k) ==
-  LET matches == {<<t, kp, v>> \in values[n] : k = kp}  IN
-  LET T == {t : <<t, kp, v>> \in matches}  IN
-    /\ T /= {}
-    /\ Broadcast(n, "delete", T)
 
 
-\* UpdateWrite Action *\
-RequestSetOnNode ==
-  /\ timestamp < MAX_TIMESTAMP
-  /\ \E <<n, k, v>> \in nodeIds \X KEYS \X VALUES : RequestSet(n, k, v)
-
-\* Checks vurrent Version and if node exists *\
-RequestDeleteOnNode ==
-  /\ \E <<n, k>> \in nodeIds \X KEYS : RequestDelete(n, k)
-  /\ UNCHANGED timestamp
 
 
-\* ReadNote *\
-DeliverOnNode ==
-  \E n \in nodeIds :
-    /\ Len(deliverQueues[n]) > 0
-    /\ \E <<command, payload>> \in {Head(deliverQueues[n])} :
-        Deliver(n, command, payload)
-    /\ deliverQueues' = [deliverQueues EXCEPT ![n] = Tail(deliverQueues[n])]
-  /\ UNCHANGED timestamp
 
-\* Checks if there are not Children nodes *\
-DeliverQueuesIsEmpty ==
-  \A n \in nodeIds: Len(deliverQueues[n]) = 0
-
-
-\* Deleting Action  *\
-Terminating ==
-  /\ DeliverQueuesIsEmpty
-  /\ UNCHANGED vars 
-
-
-*)
-
-        
 (* I need to define my next state based on the functions I will define
     Write
     Update
@@ -250,5 +171,5 @@ Liveness == <>(~ ENABLED Next)
  
 =============================================================================
 \* Modification History
-\* Last modified Tue Oct 25 11:00:17 CAST 2022 by goodwill
+\* Last modified Sat Jan 14 21:50:16 CAST 2023 by goodwill
 \* Created Tue Oct 04 09:12:06 CAST 2022 by goodwill

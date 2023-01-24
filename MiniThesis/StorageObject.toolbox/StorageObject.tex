@@ -974,7 +974,7 @@
 \fl{ {\EXTENDS} Integers ,\, FiniteSets ,\, Randomization%
 \@y{%
  introduce \ensuremath{Integers} modules and
- Naturals*\ensuremath{\.{\,\backslash\,}
+ \ensuremath{Naturals}*\ensuremath{\.{\,\backslash\,}
 }}%
 }
 \fl{}
@@ -1064,93 +1064,14 @@
 \fl{}
 \fl{}
 \fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{}
-\fl{ Next \.{\defeq}}\al{179}{2}{ \E\, n \.{\in} Nodes \.{:}}
-\fl{ \E\,}\al{180}{1}{ m \.{\in} Versions ( n ) \.{:}}
-\fl{ \.{\land}}\al{181}{1}{ Ver [ m ] \.{<} 1 \.{+} Ver [ n ]}
- \fl{ \.{\land}}\al{182}{1}{ \E\,}\al{182}{2}{ d \.{\in} ( Ver [ m ] \.{+} 1 )
+\fl{ Next \.{\defeq}}\al{100}{2}{ \E\, n \.{\in} Nodes \.{:}}
+\fl{ \E\,}\al{101}{1}{ m \.{\in} Versions ( n ) \.{:}}
+\fl{ \.{\land}}\al{102}{1}{ Ver [ m ] \.{<} 1 \.{+} Ver [ n ]}
+ \fl{ \.{\land}}\al{103}{1}{ \E\,}\al{103}{2}{ d \.{\in} ( Ver [ m ] \.{+} 1 )
  \.{\dotdot} ( Ver [ n ] \.{-} 1 ) \.{:}}
- \fl{ \.{\land}}\al{183}{1}{ Ver \.{'} \.{=} [ Ver {\EXCEPT} {\bang} [ n ]
+ \fl{ \.{\land}}\al{104}{1}{ Ver \.{'} \.{=} [ Ver {\EXCEPT} {\bang} [ n ]
  \.{=} d ]}
- \fl{ \.{\land}}\al{184}{1}{ key \.{'} \.{=} [ key {\EXCEPT} {\bang} [ n ]
+ \fl{ \.{\land}}\al{105}{1}{ key \.{'} \.{=} [ key {\EXCEPT} {\bang} [ n ]
  \.{=} m ]}
 \fl{}
 \fl{}
@@ -1172,19 +1093,19 @@
 \fl{}
 \fl{ PostCondition \.{\defeq}}
 \fl{ \A\, n \.{\in} Nodes \.{:}}
-\fl{ \.{\lor}}\al{204}{1}{ \.{\land}}\al{204}{2}{ n \.{=} Root}
-\fl{ \.{\land}}\al{205}{1}{ Ver [ n ]}\al{205}{5}{ \.{=}}\al{205}{6}{ 0}
-\fl{ \.{\land}}\al{206}{1}{ key [ n ]}\al{206}{5}{ \.{=}}\al{206}{6}{ n}
- \fl{ \.{\lor}}\al{207}{1}{ \.{\land}}\al{207}{2}{ Ver [ n ]}\al{207}{6}{
+\fl{ \.{\lor}}\al{125}{1}{ \.{\land}}\al{125}{2}{ n \.{=} Root}
+\fl{ \.{\land}}\al{126}{1}{ Ver [ n ]}\al{126}{5}{ \.{=}}\al{126}{6}{ 0}
+\fl{ \.{\land}}\al{127}{1}{ key [ n ]}\al{127}{5}{ \.{=}}\al{127}{6}{ n}
+ \fl{ \.{\lor}}\al{128}{1}{ \.{\land}}\al{128}{2}{ Ver [ n ]}\al{128}{6}{
  \.{=} MaxCardinality}
-\fl{ \.{\land}}\al{208}{1}{ key [ n ]}\al{208}{5}{ \.{=} n}
- \fl{ \.{\land}}\al{209}{1}{ \A\, m \.{\in} Versions ( n ) \.{:} Ver [ m ]
+\fl{ \.{\land}}\al{129}{1}{ key [ n ]}\al{129}{5}{ \.{=} n}
+ \fl{ \.{\land}}\al{130}{1}{ \A\, m \.{\in} Versions ( n ) \.{:} Ver [ m ]
  \.{=} MaxCardinality}
- \fl{ \.{\lor}}\al{210}{1}{ \.{\land}}\al{210}{2}{ Ver [ n ]}\al{210}{6}{
- \.{\in}}\al{210}{7}{ 1 \.{\dotdot} ( MaxCardinality \.{-} 1 )}
- \fl{ \.{\land}}\al{211}{1}{ key [ n ]}\al{211}{5}{ \.{\in}}\al{211}{6}{
+ \fl{ \.{\lor}}\al{131}{1}{ \.{\land}}\al{131}{2}{ Ver [ n ]}\al{131}{6}{
+ \.{\in}}\al{131}{7}{ 1 \.{\dotdot} ( MaxCardinality \.{-} 1 )}
+ \fl{ \.{\land}}\al{132}{1}{ key [ n ]}\al{132}{5}{ \.{\in}}\al{132}{6}{
  Versions ( n )}
- \fl{ \.{\land}}\al{212}{1}{ Ver [ n ]}\al{212}{5}{ \.{=} Ver [ key [ n ] ]
+ \fl{ \.{\land}}\al{133}{1}{ Ver [ n ]}\al{133}{5}{ \.{=} Ver [ key [ n ] ]
  \.{+} 1}
 \fl{}
 \fl{}

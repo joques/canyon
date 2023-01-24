@@ -4,7 +4,7 @@ CONSTANTS   Key,            \* The set of all keys.
             ObjId           \* The set of all objects IDs.
 VARIABLES   store,          \* A data store mapping keys to values.
             object,         \* The set of open Opath objects.
-            path,  \* Opaths of the store for each objects.
+            path,           \* Opaths of the store for each objects.
             written,        \* A log of writes performed within each objects.
             missed          \* The set of writes invisible to each objects.
 ----------------------------------------------------------------------------
@@ -90,5 +90,5 @@ Spec == \* Initialize state with Init and transition with Next.
 THEOREM Spec => [](TypeInvariant /\ objectLifecycle)
 =============================================================================
 \* Modification History
-\* Last modified Fri Oct 28 12:27:00 CAST 2022 by goodwill
+\* Last modified Fri Nov 25 12:31:33 CAST 2022 by goodwill
 \* Created Tue Oct 25 02:49:34 CAST 2022 by goodwill
