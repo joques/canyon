@@ -21,7 +21,6 @@ Key B+ Tress Algorithm
 
     1. A single median is chosen from among the leaf's elements and the new element.
     
-    2. Values less than the median are put in the new left node and values
-greater than the median are put in the new right node, with the
-median acting as a separation value.
+    2. Values less than the median are put in the new left node and values greater than the median are put in the new right node, with the median acting as a separation value.
+    
     3. The separation value is inserted in the node's parent, which may cause it to be split, and so on. If the node has no parent (i.e., the node was the root), create a new root above this node (increasing the height of the tree).
