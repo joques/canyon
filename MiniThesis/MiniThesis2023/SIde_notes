@@ -1,0 +1,27 @@
+Key B+ Tress Algorithm
+
+    1. Every node has at most m children.
+
+
+    2. Every node (except root) has at least m⁄2 children.
+
+
+    3. The root has at least two children if it is not a leaf node.
+
+
+    4. All leaves appear in the same level, and carry information.
+
+
+    5. A non-leaf node with k children contains k−1 keys.
+
+
+    INsersion:
+    1. If the node contains fewer than the maximum legal number of elements, then there is room for the new element. Insert the new element in the node, keeping the node's elements ordered.
+2. Otherwise the node is full, evenly split it into two nodes so:
+
+    1. A single median is chosen from among the leaf's elements and the new element.
+    
+    2. Values less than the median are put in the new left node and values
+greater than the median are put in the new right node, with the
+median acting as a separation value.
+    3. The separation value is inserted in the node's parent, which may cause it to be split, and so on. If the node has no parent (i.e., the node was the root), create a new root above this node (increasing the height of the tree).
